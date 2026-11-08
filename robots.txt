@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /api/
+Disallow: /account.php
+Disallow: /booking.php
+Disallow: /hotel-booking.php
+Disallow: /tour-booking.php
+
+# Replace with the live address
+Sitemap: https://www.example.com/sitemap.php

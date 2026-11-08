@@ -1,0 +1,47 @@
+Options -Indexes
+DirectoryIndex index.php
+
+# Force HTTPS on the live site: remove the # from the next three lines
+# RewriteEngine On
+# RewriteCond %{HTTPS} off
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Don't let anyone download these files directly
+<FilesMatch "^(config\.php|config\.sample\.php|prompt\.md|TODO\.md|README\.md)$|\.(sql|log|md)$|^\.">
+  Require all denied
+</FilesMatch>
+
+# Correct file types (some hosts don't know woff2)
+AddType font/woff2 .woff2
+AddType text/javascript .js
+
+# Basic security headers
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+  # Where the browser may load things from. 'unsafe-inline' is needed because the Tailwind CDN
+  # builds the styles in the browser and pages have small inline scripts (see docs/DEPLOY.md).
+  # If you add an analytics service, add its domain to script-src and connect-src.
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; form-action 'self' https://checkout.paystack.com; frame-ancestors 'self'; base-uri 'self'; object-src 'none'"
+  # Only on HTTPS: tell browsers to always use HTTPS for a year
+  Header always set Strict-Transport-Security "max-age=31536000" env=HTTPS
+</IfModule>
+
+# Friendly 404 page. On the live site (site in the web root) remove the # below:
+# ErrorDocument 404 /404.php
+
+# Make pages smaller to download
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/json image/svg+xml
+</IfModule>
+
+# Let browsers keep fonts, CSS, JS and icons
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+</IfModule>

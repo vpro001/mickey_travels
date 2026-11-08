@@ -1,0 +1,5 @@
+config.php
+storage/logs/*
+storage/uploads/*
+storage/cache/*
+!storage/**/.gitkeep
