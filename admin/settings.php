@@ -4,7 +4,7 @@ require '../includes/admin.php';
 require '../includes/pricing.php';
 admin_only();
 
-$contact_fields = ['phone' => 'Phone', 'whatsapp' => 'WhatsApp number (with country code, e.g. 2348031234567)', 'email' => 'Email', 'address' => 'Office address', 'hours' => 'Opening hours', 'licences' => 'Licence numbers (IATA, NANTA, NCAA…)'];
+$contact_fields = ['phone' => 'Phone', 'whatsapp' => 'WhatsApp number (with country code, e.g. 2348031234567)', 'email' => 'Email', 'address' => 'Office address', 'hours' => 'Opening hours', 'licences' => 'Licence numbers (IATA, NANTA, NCAA…)', 'facebook' => 'Facebook page link', 'instagram' => 'Instagram handle (without the @)'];
 
 function save_setting($name, $value)
 {

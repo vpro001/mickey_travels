@@ -2,7 +2,7 @@
 // Copy this file to config.php and fill in your own values.
 // config.php holds your real passwords and keys, so never share or commit it.
 
-define('SITE_NAME', "Mickey's Travel and Tour");
+define('SITE_NAME', 'Mickey Travels & Tours');
 // Full web address of the site, no slash at the end (used in payment and email links)
 define('SITE_URL', 'https://www.example.com');
 // A long random secret for signing links (email verification). Make one with:

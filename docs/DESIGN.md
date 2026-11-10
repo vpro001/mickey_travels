@@ -1,4 +1,4 @@
-# Design system — Mickey's Travel and Tour
+# Design system — Mickey Travels & Tours
 
 Tokens live in one place: the `<style type="text/tailwindcss">` block in `includes/header.php` (Tailwind v4 `@theme`). This file explains them. If you change a colour there, change it in `bin/contrast.php` too and re-run `php bin/contrast.php`.
 

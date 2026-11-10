@@ -1,4 +1,4 @@
-# Demo script: Mickey's Travel and Tour (about 7 minutes)
+# Demo script: Mickey Travels & Tours (about 7 minutes)
 
 For the client presentation. Follow it top to bottom; every click is written out.
 

@@ -3,6 +3,8 @@ require 'includes/init.php';
 require 'includes/stays.php';
 require 'includes/paystack.php';
 require 'includes/hotel-search.php';
+require 'includes/account.php';
+require_login();   // only signed-in customers can book
 
 // Guest details for one hotel rate, then off to Paystack.
 // We ask Duffel for a quote (a confirmed price) when the page opens and again when the form is

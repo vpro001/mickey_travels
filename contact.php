@@ -8,12 +8,21 @@ $topics = [
     'visa'        => 'Visa',
     'tour'        => 'Tours and holidays',
     'custom_trip' => 'Plan a custom trip for me',
+    'corporate'   => 'Corporate travel',
+    'medical'     => 'Medical tourism',
+    'study'       => 'Study abroad / student visa',
+    'airport'     => 'Airport logistics',
+    'cargo'       => 'Air or sea cargo',
+    'passport'    => 'International passport',
 ];
+// Topics the enquiries table has its own type for. The others are saved as 'general'
+// with the topic name as the subject.
+$enquiry_types = ['general', 'flight', 'hotel', 'visa', 'tour', 'custom_trip'];
 
 $name = '';
 $email = '';
 $phone = '';
-$topic = 'general';
+$topic = isset($topics[get('topic')]) ? get('topic') : 'general';
 $message = '';
 $errors = [];
 
@@ -52,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!$errors) {
         if (!$is_robot) {
             db_insert('enquiries', [
-                'type'    => $topic,
+                'type'    => in_array($topic, $enquiry_types) ? $topic : 'general',
                 'name'    => substr($name, 0, 120),
                 'email'   => $email,
                 'phone'   => clean_phone($phone),
@@ -124,9 +133,16 @@ include 'includes/header.php';
   <aside class="h-fit space-y-5 rounded-lg bg-paper-100 p-5 sm:p-6">
     <h2 class="text-lg font-bold">Visit or call us</h2>
     <p class="flex gap-3"><?= icon('pin', 'size-5 shrink-0 text-ink-600 mt-0.5') ?> <?= e(contact('address')) ?></p>
-    <p class="flex gap-3"><?= icon('phone', 'size-5 shrink-0 text-ink-600 mt-0.5') ?> <?= e(contact('phone')) ?></p>
-    <p class="flex gap-3"><?= icon('mail', 'size-5 shrink-0 text-ink-600 mt-0.5') ?> <?= e(contact('email')) ?></p>
+    <p class="flex gap-3"><?= icon('phone', 'size-5 shrink-0 text-ink-600 mt-0.5') ?> <a class="link" href="tel:<?= e(preg_replace('/[^\d+]/', '', contact('phone'))) ?>"><?= e(contact('phone')) ?></a></p>
+    <p class="flex gap-3"><?= icon('mail', 'size-5 shrink-0 text-ink-600 mt-0.5') ?> <a class="link break-all" href="mailto:<?= e(contact('email')) ?>"><?= e(contact('email')) ?></a></p>
     <p class="flex gap-3"><?= icon('clock', 'size-5 shrink-0 text-ink-600 mt-0.5') ?> <?= e(contact('hours')) ?></p>
+    <?php $facebook = setting('contact_facebook'); $instagram = ltrim(setting('contact_instagram'), '@'); ?>
+    <?php if ($facebook || $instagram): ?>
+      <p class="flex gap-4 border-t border-ink-900/10 pt-4">
+        <?php if ($facebook): ?><a class="link" href="<?= e($facebook) ?>" target="_blank" rel="noopener">Facebook</a><?php endif; ?>
+        <?php if ($instagram): ?><a class="link" href="https://www.instagram.com/<?= e($instagram) ?>/" target="_blank" rel="noopener">Instagram @<?= e($instagram) ?></a><?php endif; ?>
+      </p>
+    <?php endif; ?>
   </aside>
 </section>
 

@@ -4,7 +4,7 @@
 //   $page  = 'flights';      highlights that menu item (flights, hotels, visa, tours)
 if (!isset($title)) $title = '';
 if (!isset($page)) $page = '';
-if (!isset($description)) $description = "Book flights, hotels, visa assistance and holiday packages with Mickey's Travel and Tour. Pay securely in Naira.";
+if (!isset($description)) $description = "Mickey Travels & Tours, Port Harcourt: flights, hotels, visas, student visas, medical tourism and holidays. Your window to the world.";
 
 $menu = ['flights.php' => 'Flights', 'hotels.php' => 'Hotels', 'visa.php' => 'Visa', 'tours.php' => 'Tours'];
 ?>
@@ -16,6 +16,8 @@ $menu = ['flights.php' => 'Flights', 'hotels.php' => 'Hotels', 'visa.php' => 'Vi
 <title><?= $title ? e($title) . ' · ' . SITE_NAME : SITE_NAME . ' — Flights, hotels, visas and tours' ?></title>
 <meta name="description" content="<?= e($description) ?>">
 <meta name="theme-color" content="#0a1420">
+<link rel="icon" type="image/png" href="assets/img/logo-96.png">
+<link rel="apple-touch-icon" href="assets/img/logo-192.png">
 <?php
 // Search engines and link previews (WhatsApp, Facebook, X). Private pages set $noindex = true.
 $canonical = SITE_URL . '/' . basename(strtok($_SERVER['REQUEST_URI'], '?'));
@@ -42,10 +44,10 @@ if (in_array(basename($_SERVER['SCRIPT_NAME']), $private)) $noindex = true;
 <header class="print:hidden sticky top-0 z-50 border-b border-white/10 bg-ink-950/95 text-paper-50 backdrop-blur-sm">
   <div class="container-page flex h-16 items-center justify-between gap-4">
     <a href="index.php" class="group flex items-center gap-2.5">
-      <span class="flex size-8 items-center justify-center rounded-md bg-saffron-400 font-display text-lg font-extrabold text-ink-950 transition group-hover:rotate-[-6deg]">M</span>
+      <img src="assets/img/logo-96.png" alt="" width="40" height="40" class="size-10 rounded-full transition group-hover:rotate-[-6deg]">
       <span class="leading-none">
-        <span class="block font-display text-lg font-bold tracking-tight">Mickey's</span>
-        <span class="block font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-saffron-300">Travel &amp; Tour</span>
+        <span class="block font-display text-lg font-bold tracking-tight">Mickey Travels</span>
+        <span class="block font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-saffron-300">&amp; Tours</span>
       </span>
     </a>
 

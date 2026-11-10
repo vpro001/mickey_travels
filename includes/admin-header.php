@@ -37,7 +37,7 @@ $counts = [
   <div class="flex items-center justify-between gap-3 px-5 py-4 lg:block">
     <a href="index.php" class="flex items-center gap-2.5">
       <span class="flex size-8 items-center justify-center rounded-md bg-saffron-400 font-display text-lg font-extrabold text-ink-950">M</span>
-      <span class="leading-none"><span class="block font-display font-bold text-paper-50">Mickey's</span><span class="font-mono text-[10px] uppercase tracking-[0.2em] text-saffron-300">Back office</span></span>
+      <span class="leading-none"><span class="block font-display font-bold text-paper-50">Mickey Travels</span><span class="font-mono text-[10px] uppercase tracking-[0.2em] text-saffron-300">Back office</span></span>
     </a>
     <details class="lg:hidden"><summary class="list-none rounded-md px-3 py-2 text-sm ring-1 ring-white/20">Menu</summary>
       <nav class="absolute left-0 right-0 z-40 mt-3 space-y-1 bg-ink-950 p-3">

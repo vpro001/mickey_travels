@@ -1,6 +1,7 @@
 <?php
 require 'includes/init.php';
 require 'includes/paystack.php';
+require 'includes/account.php';
 
 $tour = db_one("SELECT * FROM tour_packages WHERE slug = ? AND is_published = 1", [get('slug')]);
 if (!$tour) {
@@ -12,6 +13,14 @@ $itinerary = json_decode((string) $tour['itinerary_json'], true) ?: [];
 $f = ['departure' => '', 'travellers' => 2, 'option' => $tour['deposit_pct'] > 0 ? 'deposit' : 'full', 'name' => '', 'email' => '', 'phone' => '', 'notes' => ''];
 $errors = [];
 $enquiry_sent = false;
+$user = current_user();
+$login_url = 'login.php?next=' . urlencode('tour.php?slug=' . $tour['slug'] . '#book');
+if ($user) {
+    // Fill in the lead traveller from the account
+    $f['name'] = $user['full_name'];
+    $f['email'] = $user['email'];
+    $f['phone'] = (string) $user['phone'];
+}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     csrf_check();
@@ -29,7 +38,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         $errors['enquiry'] = 'Please enter your name, a valid email and your question.';
     } else {
-        // Booking
+        // Booking (signed-in customers only)
+        if (!$user) {
+            flash('Please sign in to book this tour.', 'error');
+            redirect($login_url);
+        }
         foreach ($f as $key => $v) $f[$key] = post($key);
         $dep = db_one("SELECT * FROM tour_departures WHERE id = ? AND package_id = ? AND status = 'open' AND start_date > CURDATE()", [(int) $f['departure'], $tour['id']]);
         $travellers = (int) $f['travellers'];
@@ -197,6 +210,7 @@ $label = 'block font-mono text-[11px] font-semibold uppercase tracking-[0.16em] 
             </fieldset>
             <?php else: ?><input type="hidden" name="option" value="full"><?php endif; ?>
 
+            <?php if ($user): ?>
             <div class="space-y-3 border-t border-dashed border-paper-300 pt-4">
               <div><label class="<?= $label ?>" for="name">Lead traveller</label><input id="name" name="name" autocomplete="name" class="<?= $field ?>" value="<?= e($f['name']) ?>"><?= isset($errors['name']) ? '<p class="field-error">' . e($errors['name']) . '</p>' : '' ?></div>
               <div><label class="<?= $label ?>" for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" class="<?= $field ?>" value="<?= e($f['email']) ?>"><?= isset($errors['email']) ? '<p class="field-error">' . e($errors['email']) . '</p>' : '' ?></div>
@@ -210,6 +224,14 @@ $label = 'block font-mono text-[11px] font-semibold uppercase tracking-[0.16em] 
             </div>
             <button class="btn btn-primary w-full py-4 text-base"><?= icon('card', 'size-5') ?> Book and pay securely</button>
             <p class="text-center text-xs text-ink-600">Card, bank transfer or USSD through Paystack.</p>
+            <?php else: ?>
+            <div class="rounded-xl bg-paper-100 p-4 text-sm">
+              <div class="flex justify-between"><span class="text-ink-700">Total</span><b class="num" id="total">–</b></div>
+              <div class="mt-1 flex justify-between font-semibold"><span>To pay now</span><span class="num" id="now">–</span></div>
+            </div>
+            <a class="btn btn-primary w-full py-4 text-base" href="<?= e($login_url) ?>">Sign in to book</a>
+            <p class="text-center text-xs text-ink-600">No account? <a class="link" href="register.php">Create one</a> in a minute.</p>
+            <?php endif; ?>
           <?php endif; ?>
         </div>
       </form>

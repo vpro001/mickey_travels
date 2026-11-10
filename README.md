@@ -1,4 +1,4 @@
-# Mickey's Travel and Tour
+# Mickey Travels & Tours
 
 Plain PHP pages and a MySQL database. No framework and no build step.
 

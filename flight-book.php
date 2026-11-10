@@ -1,6 +1,8 @@
 <?php
 require 'includes/init.php';
 require 'includes/booking.php';
+require 'includes/account.php';
+require_login();   // only signed-in customers can book
 
 // Step 2 of booking: traveller details, then off to Paystack.
 // The fare is fetched again from the airline every time this page loads and again when

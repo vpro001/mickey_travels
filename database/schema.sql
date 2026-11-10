@@ -432,7 +432,9 @@ INSERT INTO settings (name, value) VALUES
   ('fx_buffer_pct', '2.00'),
   ('hotel_markup_type', 'flat_booking'),  -- flat_booking or percent
   ('hotel_markup_value', '2000'),
-  ('contact_phone', ''), ('contact_whatsapp', ''), ('contact_email', ''),
-  ('contact_address', ''), ('contact_hours', ''), ('contact_licences', '');
+  ('contact_phone', '0901 141 3339'), ('contact_whatsapp', ''), ('contact_email', 'officemickeytravels@gmail.com'),
+  ('contact_address', 'No 42 Woji Estate Road, YKC Junction, Port Harcourt'), ('contact_hours', 'Monday to Friday, 8am to 5pm'),
+  ('contact_licences', ''),
+  ('contact_facebook', 'https://www.facebook.com/share/18YWD3ecav/'), ('contact_instagram', 'mickeystravels1');
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -67,11 +67,11 @@ include 'includes/header.php';
   <div class="container-page pt-10 pb-12 sm:pt-20 sm:pb-20 lg:pt-28">
     <div class="flex flex-wrap items-end justify-between gap-8">
       <div class="max-w-4xl">
-        <p class="eyebrow text-saffron-300">Lagos · 6.52° N, 3.38° E</p>
+        <p class="eyebrow text-saffron-300">Port Harcourt · 4.82° N, 7.03° E</p>
         <h1 class="mt-4 text-[2.6rem] font-extrabold leading-[0.95] tracking-[-0.035em] sm:text-7xl lg:text-[6.5rem]">
           Fly anywhere.<br><span class="text-saffron-400">Pay in Naira.</span>
         </h1>
-        <p class="mt-5 max-w-xl text-base text-ink-100 sm:text-xl sm:leading-relaxed">Flights from over 300 airlines, hotels, visas and holidays, booked in one place by a Lagos travel agency that picks up the phone.</p>
+        <p class="mt-5 max-w-xl text-base text-ink-100 sm:text-xl sm:leading-relaxed">Flights from over 300 airlines, hotels, visas and holidays, booked in one place by a Port Harcourt travel agency that picks up the phone.</p>
       </div>
       <ul class="hidden space-y-3 border-l border-white/20 pl-5 font-mono text-xs uppercase tracking-[0.16em] text-ink-200 lg:block">
         <li><span class="text-saffron-300">01</span> · 300+ airlines</li>
@@ -99,7 +99,7 @@ include 'includes/header.php';
             <p class="text-xs text-ink-300">Popular routes from Lagos, local and international. Tap one for today's fares.</p>
           </div>
         </div>
-        <p class="font-mono text-xs uppercase tracking-[0.2em] text-ink-300">Lagos time <span id="lagos-time" class="ml-1 text-lg font-semibold text-paper-50 num"><?= date('H:i') ?></span></p>
+        <p class="font-mono text-xs uppercase tracking-[0.2em] text-ink-300">Nigeria time <span id="lagos-time" class="ml-1 text-lg font-semibold text-paper-50 num"><?= date('H:i') ?></span></p>
       </div>
 
       <div class="hidden grid-cols-[1fr_6rem_9rem_9rem] gap-4 px-7 pt-4 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-400 md:grid">
@@ -131,7 +131,7 @@ include 'includes/header.php';
 <section class="container-page py-16 sm:py-24">
   <div class="reveal grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
     <div>
-      <p class="eyebrow text-saffron-700">Where Lagos is flying</p>
+      <p class="eyebrow text-saffron-700">Where Nigerians are flying</p>
       <h2 class="mt-3 max-w-2xl text-4xl font-extrabold leading-[1] sm:text-6xl">Five cities worth the flight.</h2>
     </div>
     <p class="max-w-sm text-ink-700">Return trips with one adult in economy. Tap a city and we'll show you today's fares.</p>
@@ -260,7 +260,7 @@ include 'includes/header.php';
     <?= photo('lekki-bridge', 'The Lekki-Ikoyi Link Bridge in Lagos', 'absolute inset-0 -z-20 h-full w-full object-cover object-[50%_30%]', true, [480, 800], '100vw') ?>
     <div class="absolute inset-0 -z-10 bg-gradient-to-r from-ink-950 via-ink-950/85 to-ink-950/30"></div>
     <div class="max-w-2xl p-8 sm:p-14 lg:p-20">
-      <p class="eyebrow text-saffron-300">Real people, in Lagos</p>
+      <p class="eyebrow text-saffron-300">Real people, in Port Harcourt</p>
       <h2 class="mt-3 text-4xl font-extrabold leading-[1] sm:text-6xl">Rather talk it through?</h2>
       <p class="mt-4 text-lg text-ink-100 leading-relaxed">Group bookings, special assistance, a trip with several stops, or you just want a second opinion. Send us a message and one of our staff will get back to you.</p>
       <div class="mt-8 flex flex-wrap gap-3">

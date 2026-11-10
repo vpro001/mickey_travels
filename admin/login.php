@@ -52,7 +52,7 @@ include '../includes/admin-header.php';
 <div class="mx-auto mt-[10vh] max-w-sm">
   <div class="flex items-center gap-2.5">
     <span class="flex size-10 items-center justify-center rounded-lg bg-saffron-400 font-display text-xl font-extrabold text-ink-950">M</span>
-    <span class="leading-none"><span class="block font-display text-lg font-bold">Mickey's</span><span class="font-mono text-[10px] uppercase tracking-[0.2em] text-saffron-700">Back office</span></span>
+    <span class="leading-none"><span class="block font-display text-lg font-bold">Mickey Travels</span><span class="font-mono text-[10px] uppercase tracking-[0.2em] text-saffron-700">Back office</span></span>
   </div>
   <h1 class="mt-8 text-3xl font-extrabold"><?= $has_staff ? 'Staff log in' : 'Create the admin account' ?></h1>
   <?php if (!$has_staff): ?><p class="mt-2 text-sm text-ink-700">No staff accounts exist yet. The account you create now is the main admin.</p><?php endif; ?>
